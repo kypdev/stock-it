@@ -33,6 +33,16 @@ class AuthService {
     });
   }
 
+  signinWithEmail(
+    context,
+    email,
+    pass,
+  ) async {
+    _auth.signInWithEmailAndPassword(email: email, password: pass).then((_) {
+      Navigator.pushReplacementNamed(context, '/home');
+    }).catchError((e) => debugPrint('Err: $e'));
+  }
+
   signout(context) async {
     _auth.signOut().then((result) {
       Navigator.pushReplacementNamed(context, '/login');

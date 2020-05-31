@@ -15,14 +15,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Column(
-            children: <Widget>[
-              RButton(
-                action: authService.signout(context),
-                color: Colors.red,
-                text: 'Signout',
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                rButton(
+                  context: context,
+                  action: ()=> authService.signout(context),
+                  color: Colors.red,
+                  text: 'Signout',
+                ),
+              ],
+            ),
           ),
         ),
       ),
