@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "992666791539",
+    "firebase_url": "https://stockit-89d78.firebaseio.com",
+    "project_id": "stockit-89d78",
+    "storage_bucket": "stockit-89d78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992666791539:android:468de47c12623beda84406",
+        "android_client_info": {
+          "package_name": "com.bell.sau.stock_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992666791539-vt3u9d5de86nb5ojnmgdk8gtgsj60vnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU9zvR3jCbXaHX0vpntp7IXdK7nZVl-A0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992666791539-vt3u9d5de86nb5ojnmgdk8gtgsj60vnj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
