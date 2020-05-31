@@ -5,13 +5,14 @@ class TFFLogin extends StatelessWidget {
   final prefixIcon;
   final sufficIcon;
   final obsecureText;
+  final controller;
 
   const TFFLogin(
       {Key key,
       this.labelText,
       this.prefixIcon,
       this.sufficIcon,
-      this.obsecureText})
+      this.obsecureText, this.controller})
       : super(key: key);
 
   @override
@@ -22,6 +23,7 @@ class TFFLogin extends StatelessWidget {
         height: 60,
         width: MediaQuery.of(context).size.width,
         child: TextFormField(
+          controller: controller,
           obscureText: obsecureText,
           style: TextStyle(
             color: Colors.white,
