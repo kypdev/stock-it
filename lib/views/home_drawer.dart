@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stock_it/views/add_product_screen.dart';
 import 'package:stock_it/views/create_group_screen.dart';
 import 'package:stock_it/views/view_group_screen.dart';
 
@@ -14,7 +13,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Stock It'),
+          title: Text('Create Group'),
           centerTitle: true,
         ),
         body: CreateGroupScreen(),
@@ -41,26 +40,49 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
 
 
-              Container(
-                decoration: BoxDecoration(
-              color: Colors.blue[100],
-                ),
-                child: ListTile(
-              title: Text(
-                'Create group',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateGroupScreen()));
-              },
-                ),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              // color: Colors.blue[100],
+              //   ),
+              //   child: ListTile(
+              // title: Text(
+              //   'Create group',
+              //   style: TextStyle(
+              //     color: Colors.black,
+              //     fontSize: 20.0,
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
+              // onTap: () {
+              //   Navigator.pop(context);
+              //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateGroupScreen()));
+              // },
+              //   ),
+              // ),
 
+
+              // Padding(
+              //   padding: EdgeInsets.only(top: 8.0),
+              //   child: Container(
+              // decoration: BoxDecoration(
+              //   color: Colors.blue[100],
+              // ),
+              // child: ListTile(
+              //   title: Text(
+              //     'Add Product',
+              //     style: TextStyle(
+              //       color: Colors.black,
+              //       fontSize: 20.0,
+              //     ),
+              //     textAlign: TextAlign.center,
+              //   ),
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddProductScreen()));
+              //   },
+              // ),
+              //   ),
+              // ),
 
               Padding(
                 padding: EdgeInsets.only(top: 8.0),
@@ -70,30 +92,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
               child: ListTile(
                 title: Text(
-                  'Add Product',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddProductScreen()));
-                },
-              ),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Container(
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-              ),
-              child: ListTile(
-                title: Text(
-                  'View',
+                  'View Group',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20.0,

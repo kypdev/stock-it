@@ -16,8 +16,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
   String uid;
 
   userId() async {
-    user = await auth.currentUser();
-    uid =  user.uid;
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseUser user = await auth.currentUser();
+    final uuid = user.uid.toString();
+    print(uuid);
+    setState(() {
+      uid = uuid;
+    });
   }
 
   @override

@@ -184,18 +184,18 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Create Group'),
-          centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.ac_unit),
-                onPressed: () {
-                  print('valud: $imgUrl');
-                  print('valud2: $tmpFile');
-                }),
-          ],
-        ),
+        // appBar: AppBar(
+        //   title: Text('Create Group'),
+        //   centerTitle: true,
+        //   actions: <Widget>[
+        //     IconButton(
+        //         icon: Icon(Icons.ac_unit),
+        //         onPressed: () {
+        //           print('valud: $imgUrl');
+        //           print('valud2: $tmpFile');
+        //         }),
+        //   ],
+        // ),
         body: Stack(
           alignment: Alignment.center,
           children: <Widget>[
