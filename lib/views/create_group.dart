@@ -46,7 +46,7 @@ class _CreateGroupState extends State<CreateGroup> {
                     children:
                         snapshot.data.documents.map((DocumentSnapshot docs) {
                       return GroupCard(
-                        text: docs['name'],
+                        title: docs['name'],
                       );
                     }).toList(),
                   );
@@ -61,7 +61,7 @@ class _CreateGroupState extends State<CreateGroup> {
               child: ListView(
                 children: snapshot.data.documents.map((DocumentSnapshot docs) {
                   return GroupCard(
-                    text: docs['name'],
+                    title: docs['name'],
                   );
                 }).toList(),
               ),

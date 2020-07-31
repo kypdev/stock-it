@@ -77,7 +77,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     children:
                         snapshot.data.documents.map((DocumentSnapshot docs) {
                       return GroupCard(
-                        text: docs['name'],
+                        title: docs['name'],
                       );
                     }).toList(),
                   );
@@ -92,7 +92,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: ListView(
                 children: snapshot.data.documents.map((DocumentSnapshot docs) {
                   return GroupCard(
-                    text: docs['name'],
+                    title: docs['name'],
                   );
                 }).toList(),
               ),
