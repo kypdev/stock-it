@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_it/views/create_group_screen.dart';
+import 'package:stock_it/views/profile_screen.dart';
 import 'package:stock_it/views/view_group_screen.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -40,25 +41,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
 
 
-              // Container(
-              //   decoration: BoxDecoration(
-              // color: Colors.blue[100],
-              //   ),
-              //   child: ListTile(
-              // title: Text(
-              //   'Create group',
-              //   style: TextStyle(
-              //     color: Colors.black,
-              //     fontSize: 20.0,
-              //   ),
-              //   textAlign: TextAlign.center,
-              // ),
-              // onTap: () {
-              //   Navigator.pop(context);
-              //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateGroupScreen()));
-              // },
-              //   ),
-              // ),
+              
 
 
               // Padding(
@@ -104,6 +87,29 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => ViewGroupScreen()));
                 },
               ),
+                ),
+              ),
+
+              Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                color: Colors.blue[100],
+                  ),
+                  child: ListTile(
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.0,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+                },
+                  ),
                 ),
               ),
 
