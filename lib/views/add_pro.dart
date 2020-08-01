@@ -1,22 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:stock_it/views/add_pro.dart';
-import 'package:stock_it/widget/group_card.dart';
+import 'package:stock_it/views/add_item_pro.dart';
 
-class ViewGroupScreen extends StatefulWidget {
+import '../widget/group_card.dart';
+
+class AddPro extends StatefulWidget {
+  final docsID;
+
+  const AddPro({Key key, this.docsID}) : super(key: key);
   @override
-  _ViewGroupScreenState createState() => _ViewGroupScreenState();
+  _AddProState createState() => _AddProState();
 }
 
-class _ViewGroupScreenState extends State<ViewGroupScreen> {
-  FirebaseAuth auth = FirebaseAuth.instance;
-
-  FirebaseUser user;
-
-  Firestore firestore = Firestore.instance;
-
+class _AddProState extends State<AddPro> {
   String uid;
 
   userId() async {
@@ -42,20 +41,14 @@ class _ViewGroupScreenState extends State<ViewGroupScreen> {
         appBar: AppBar(
           title: Text('View Group'),
           centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.ac_unit),
-              onPressed: () {
-                print('value: $uid');
-              },
-            ),
-          ],
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance
               .collection('users')
               .document(uid)
               .collection('groups')
+              .document(widget.docsID)
+              .collection('proitem')
               .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
@@ -72,7 +65,6 @@ class _ViewGroupScreenState extends State<ViewGroupScreen> {
                         onLongPress: () {
                           var id = docs.documentID.toString();
                           print('$id');
-
                           Alert(
                             context: context,
                             type: AlertType.warning,
@@ -85,16 +77,19 @@ class _ViewGroupScreenState extends State<ViewGroupScreen> {
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
+                                color: Color.fromRGBO(0, 179, 134, 1.0),
                                 onPressed: () {
                                   Firestore.instance
                                       .collection('users')
                                       .document(uid)
                                       .collection('groups')
+                                      .document(widget.docsID)
+                                      .collection('proitem')
                                       .document(id)
                                       .delete();
                                   Navigator.pop(context);
+                                  Navigator.pop(context);
                                 },
-                                color: Color.fromRGBO(0, 179, 134, 1.0),
                               ),
                               DialogButton(
                                 child: Text(
@@ -111,23 +106,11 @@ class _ViewGroupScreenState extends State<ViewGroupScreen> {
                             ],
                           ).show();
                         },
-                        onTap: () {
-                          var docid = docs.documentID.toString();
-
-                          print('docid: $docid');
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddPro(
-                                        docsID: docid,
-                                      )));
-                        },
                         child: GroupCard(
                           title: docs['name'],
                           detail: docs['detail'],
                           img: docs['img'],
-                          item: docs['item'],
+                          item: docs['price'],
                         ),
                       );
                     }).toList(),
@@ -152,6 +135,85 @@ class _ViewGroupScreenState extends State<ViewGroupScreen> {
               ),
             );
           },
+        ),
+        floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          animatedIconTheme: IconThemeData(size: 20.0),
+          visible: true,
+          closeManually: false,
+          curve: Curves.bounceIn,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.5,
+          // onOpen: ()=>print('open dial'),
+          // onClose: ()=>print('dial close'),
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.black,
+          elevation: 8.0,
+          shape: CircleBorder(),
+          children: [
+            SpeedDialChild(
+                child: Icon(Icons.add),
+                backgroundColor: Colors.pinkAccent,
+                label: 'Add Group',
+                labelStyle: TextStyle(
+                  fontSize: 18.0,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => AddItemPro(
+                            docsID: widget.docsID,
+                          )));
+                  // Alert(
+                  //   context: context,
+                  //   title: 'Add Group',
+                  //   content: Form(
+                  //     key: _formKey,
+                  //     child: Column(
+                  //       children: <Widget>[
+                  //         showImage(),
+                  //         RaisedButton(
+                  //           onPressed: () => chooseImage(context),
+                  //           child: Text('Choose Image'),
+                  //         ),
+                  //         TextFormField(
+                  //           controller: nameCtrl,
+                  //           decoration: InputDecoration(
+                  //             icon: Icon(Icons.shop_two),
+                  //             labelText: 'Name',
+                  //           ),
+                  //         ),
+                  //         TextFormField(
+                  //           controller: nameCtrl,
+                  //           decoration: InputDecoration(
+                  //             icon: Icon(Icons.shop_two),
+                  //             labelText: 'Detail',
+                  //           ),
+                  //         ),
+                  //         TextFormField(
+                  //           controller: nameCtrl,
+                  //           decoration: InputDecoration(
+                  //             icon: Icon(Icons.shop_two),
+                  //             labelText: 'Price',
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  //   buttons: [
+                  //     DialogButton(
+                  //       onPressed: () {},
+                  //       child: Text(
+                  //         'OK',
+                  //         style: TextStyle(
+                  //           color: Colors.white,
+                  //           fontSize: 20.0,
+                  //         ),
+                  //       ),
+                  //     )
+                  //   ],
+                  // ).show();
+                }),
+          ],
         ),
       ),
     );
